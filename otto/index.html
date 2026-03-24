@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hund gefunden</title>
+<title>Dog found</title>
 
 <style>
 body{
@@ -160,55 +160,55 @@ white-space:pre-line;
 
 <div class="card">
 
-<div class="headline">🐶 Hund gefunden?</div>
+<div class="headline">🐶 Found a dog?</div>
 
-<div class="success">💙 Danke! Du hast mir gerade sehr geholfen</div>
+<div class="success">💙 Thank you! You just helped me a lot</div>
 
-<div class="dog-name">Hallo, mein Name ist Otto</div>
+<div class="dog-name">Hello, my name is Otto</div>
 
 <img src="dog.png">
 
 <div class="subtitle">
-Ich habe mich verlaufen. Bitte hilf mir nach Hause!
+I got lost. Please help me get home!
 </div>
 
 <div class="info-box">
-📞 Ruf bitte kurz an oder sende eine Nachricht  
-Mein Besitzer holt mich sofort ab
+📞 Please call or send a message  
+My owner will pick me up immediately
 </div>
 
 <a class="button call" href="tel:++491701692197">
-📞 Besitzer anrufen
+📞 Call owner
 </a>
 
 <a class="button whatsapp" href="#" onclick="sendWhatsApp()">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:20px; margin-right:8px;">
-WhatsApp-Nachricht senden
+WhatsApp message
 </a>
 
 <button class="button location" onclick="sendLocation()">
-📍 Nur Standort senden
+📍 Send location only
 </button>
 
 <div class="trust">
-🔒 Sichere Seite  
-Dein Standort wird nur gesendet, wenn du zustimmst
+🔒 Secure page  
+Your location is only shared if you agree
 </div>
 
 <iframe id="map" class="map"></iframe>
 
 <div class="emotional">
-💙 Mein Besitzer sucht mich bestimmt schon  
-Danke, dass du mir hilfst, nach Hause zu kommen
+💙 My owner is probably already looking for me  
+Thank you for helping me get home
 </div>
 
 <div class="warning">
-Bitte nicht behalten – ich werde vermisst
+Please do not keep me – I am being missed
 </div>
 
 <footer>
 🐶 Powered by PetReturn  
-Danke, dass du hilfst 💙
+Thank you for helping 💙
 </footer>
 
 </div>
@@ -217,12 +217,12 @@ Danke, dass du hilfst 💙
 
 function sendWhatsApp(){
 const phone="+491701692197";
-const message=`Hallo! Ich habe Ihren Hund Otto gefunden 🐶
+const message=`Hello! I found your dog Otto 🐶
 
-Er ist bei mir in Sicherheit 💙  
-Ich bleibe hier und warte, bis Sie da sind.
+He/She is safe with me 💙  
+I will stay here and wait until you arrive.
 
-📍 Mein Standort:
+📍 My location:
 https://maps.google.com`;
 window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`);
 }
@@ -232,7 +232,7 @@ navigator.geolocation.getCurrentPosition(function(pos){
 const lat = pos.coords.latitude;
 const lon = pos.coords.longitude;
 const phone="+491701692197";
-const message=`📍 Standort: https://maps.google.com/?q=${lat},${lon}`;
+const message=`📍 Location: https://maps.google.com/?q=${lat},${lon}`;
 
 window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`);
 
