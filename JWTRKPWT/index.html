@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hund gefunden</title>
+<style>
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#f0f9ff;
+color:#1e293b;
+display:flex;
+justify-content:center;
+padding:20px;
+min-height:100vh;
+box-sizing:border-box;
+}
+.card{
+background:white;
+border-radius:20px;
+padding:30px;
+width:90%;
+max-width:440px;
+text-align:center;
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+.headline{
+font-size:30px;
+font-weight:800;
+margin-bottom:10px;
+color:#0f172a;
+}
+.success{
+background:#e0f2fe;
+padding:10px;
+border-radius:10px;
+margin-bottom:15px;
+font-size:14px;
+font-weight:600;
+}
+.status-box{
+padding:14px;
+border-radius:14px;
+margin-bottom:16px;
+text-align:left;
+font-size:14px;
+line-height:1.5;
+}
+.status-box.missing{
+background:#fee2e2;
+color:#7f1d1d;
+border:2px solid #fca5a5;
+}
+.status-box.found{
+background:#dcfce7;
+color:#14532d;
+border:2px solid #86efac;
+}
+.status-title{
+font-size:20px;
+font-weight:800;
+margin-bottom:8px;
+}
+.status-line{
+margin-top:8px;
+}
+.status-warning{
+margin-top:10px;
+font-weight:bold;
+}
+.dog-name{
+font-size:24px;
+font-weight:700;
+margin-bottom:15px;
+}
+.subtitle{
+opacity:0.8;
+margin-bottom:20px;
+}
+.info-box, .info-extra, .finder-hint, .privacy-note{
+background:#e0f7fa;
+border-radius:12px;
+padding:12px;
+font-size:14px;
+margin-bottom:12px;
+white-space:pre-line;
+}
+.finder-hint{
+font-weight:700;
+background:#fff7ed;
+color:#9a3412;
+border:1px solid #fdba74;
+}
+.privacy-note{
+background:#f8fafc;
+color:#475569;
+}
+.emotional{
+margin-top:15px;
+font-size:15px;
+white-space:pre-line;
+}
+.trust{
+margin-top:10px;
+font-size:13px;
+opacity:0.7;
+white-space:pre-line;
+}
+img.dog-img{
+width:90%;
+max-width:340px;
+height:auto;
+border-radius:14px;
+border:3px solid white;
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
+margin-bottom:20px;
+}
+.button{
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+padding:16px;
+border-radius:12px;
+margin:10px 0;
+font-weight:bold;
+border:none;
+cursor:pointer;
+transition:all 0.2s ease;
+color:white;
+width:100%;
+box-sizing:border-box;
+}
+.button:hover{
+transform:scale(1.02);
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+.call{
+background:#06b6d4;
+font-size:18px;
+padding:18px;
+}
+.whatsapp{
+background:#22d3ee;
+}
+.location{
+background:#bfdbfe;
+color:#1e3a8a;
+font-size:14px;
+padding:14px;
+}
+.reveal{
+background:#334155;
+font-size:14px;
+}
+.secret-phone{
+font-weight:bold;
+letter-spacing:0.3px;
+}
+.map{
+margin-top:15px;
+width:100%;
+height:250px;
+border-radius:12px;
+border:none;
+display:none;
+opacity:0;
+transition:opacity 0.4s ease;
+}
+.map.show{
+display:block;
+opacity:1;
+}
+.warning{
+margin-top:15px;
+font-size:14px;
+color:#b91c1c;
+font-weight:bold;
+}
+.id-box{
+margin-top:14px;
+font-size:12px;
+opacity:0.6;
+}
+.footer-logo{
+margin-top:22px;
+margin-bottom:10px;
+max-width:140px;
+width:42%;
+height:auto;
+}
+footer{
+margin-top:8px;
+font-size:12px;
+opacity:0.6;
+white-space:pre-line;
+}
+.wa-icon{
+width:20px;
+margin-right:8px;
+}
+</style>
+</head>
+<body>
+<div class="card">
+
+<div class="headline">🐶 Hund gefunden?</div>
+<div class="success">💙 Danke! Du hast mir gerade sehr geholfen</div>
+
+<div class="dog-name">Hallo, mein Name ist Otto</div>
+
+<img class="dog-img" src="dog.png" alt="Hundebild">
+
+<div class="subtitle">Ich habe mich verlaufen. Bitte hilf mir nach Hause!</div>
+
+<div class="info-box">📞 Bitte kontaktiere meinen Besitzer
+Ein kurzer Anruf oder eine Nachricht reicht</div>
+
+<div class="privacy-note">Sensible Informationen sind erst bei Bedarf sichtbar.</div>
+<button class="button reveal" onclick="revealEmergencyInfo()">🚨 Notfallkontakt anzeigen</button>
+
+
+<div class="info-extra secret-panel" id="emergencyPanel" style="display:none;">
+<strong>Notfallkontakt:</strong>
+<div class="secret-phone" id="emergencyValue"></div>
+</div>
+
+
+
+<button class="button call" onclick="callOwner()">📞 Besitzer anrufen</button>
+
+<button class="button whatsapp" onclick="sendWhatsApp()">
+<img class="wa-icon" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+WhatsApp öffnen
+</button>
+
+<button class="button location" onclick="sendLocation()">📍 Nur Standort senden</button>
+
+<div class="trust">🔒 Sichere Seite
+Dein Standort wird nur gesendet, wenn du zustimmst</div>
+
+<iframe id="map" class="map"></iframe>
+
+<div class="emotional">💙 Mein Besitzer sucht mich bestimmt schon
+Danke, dass du mir hilfst, nach Hause zu kommen</div>
+<div class="warning">Bitte nicht behalten – ich werde vermisst</div>
+
+<div class="id-box">ID: JWTRKPWT</div>
+
+<img class="footer-logo" src="logo.png" alt="PetReturn Logo">
+<footer>🐶 Powered by PetReturn
+Danke, dass du hilfst 💙</footer>
+
+</div>
+
+<script>
+const encodedPhone = "KzQ5MTcwMTY5MjE5Nw==";
+const encodedEmergencyPhone = "KzQ5MTc1ODY2NzE2OQ==";
+const defaultMessage = "Hallo, ich habe Ihren Hund Otto gefunden.";
+const locationLabel = "📍 Standort";
+const waitText = "Bitte kurz warten...";
+const geoNotSupported = "Geolocation wird auf diesem Gerät nicht unterstützt.";
+const geoFailed = "Standort konnte nicht abgerufen werden.";
+let lastActionAt = 0;
+
+function decodePhone(value) {
+  try {
+    return atob(value || "");
+  } catch (e) {
+    return "";
+  }
+}
+
+function actionCooldown() {
+  const now = Date.now();
+  if (now - lastActionAt < 5000) {
+    alert(waitText);
+    return false;
+  }
+  lastActionAt = now;
+  return true;
+}
+
+function getOwnerPhone() {
+  return decodePhone(encodedPhone);
+}
+
+function whatsappPhone() {
+  const phone = getOwnerPhone() || "";
+  return phone.replace(/\D/g, "");
+}
+
+function callOwner() {
+  if (!actionCooldown()) return;
+  const phone = getOwnerPhone();
+  if (!phone) return;
+  window.location.href = `tel:${phone}`;
+}
+
+function sendWhatsApp() {
+  if (!actionCooldown()) return;
+  const phone = whatsappPhone();
+  if (!phone) return;
+  const message = defaultMessage;
+  window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+}
+
+function revealEmergencyInfo() {
+  const emergencyPhone = decodePhone(encodedEmergencyPhone);
+  const emergencyValue = document.getElementById("emergencyValue");
+  const emergencyPanel = document.getElementById("emergencyPanel");
+  const medicalPanel = document.getElementById("medicalPanel");
+  if (emergencyValue && emergencyPhone) {
+    emergencyValue.textContent = emergencyPhone;
+  }
+  if (emergencyPanel) emergencyPanel.style.display = "block";
+  if (medicalPanel) medicalPanel.style.display = "block";
+}
+
+function sendLocation() {
+  if (!actionCooldown()) return;
+  if (!navigator.geolocation) {
+    alert(geoNotSupported);
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(function(pos){
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+    const phone = whatsappPhone();
+    if (!phone) return;
+    const message = `${locationLabel}: https://maps.google.com/?q=${lat},${lon}`;
+
+    window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    const map = document.getElementById("map");
+    map.src = `https://maps.google.com/maps?q=${lat},${lon}&z=15&output=embed`;
+    map.classList.add("show");
+  }, function() {
+    alert(geoFailed);
+  });
+}
+</script>
+</body>
+</html>
