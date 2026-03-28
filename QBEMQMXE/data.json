@@ -1,0 +1,19 @@
+{
+  "dog_id": "QBEMQMXE",
+  "name": "Otto",
+  "phone": "+491701692197",
+  "emergency_phone": "",
+  "medical_info": "",
+  "language": "de",
+  "tag_size_mm": 25,
+  "repo": "PetReturn",
+  "url": "https://PetReturn.github.io/PetReturn/QBEMQMXE/",
+  "image_filename": "Otto-dog.png",
+  "status": "normal",
+  "finder_hint": "",
+  "notfallmodus": false,
+  "last_seen": "",
+  "search_instructions": "",
+  "reward_info": "",
+  "search_contact": ""
+}
