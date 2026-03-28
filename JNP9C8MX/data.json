@@ -1,0 +1,19 @@
+{
+  "dog_id": "JNP9C8MX",
+  "name": "Otto",
+  "phone": "+491701692197",
+  "emergency_phone": "+491758667169",
+  "medical_info": "",
+  "language": "de",
+  "tag_size_mm": 25,
+  "repo": "PetReturn",
+  "url": "https://PetReturn.github.io/PetReturn/JNP9C8MX/",
+  "image_filename": "Otto-dog.png",
+  "status": "normal",
+  "finder_hint": "",
+  "notfallmodus": true,
+  "last_seen": "",
+  "search_instructions": "",
+  "reward_info": "",
+  "search_contact": ""
+}
